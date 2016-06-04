@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	</script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="js/gmaps.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+	<script src="js/wow.min.js"></script>
+	<script src="http://dinodamarapratama.github.io/data.json"></script>
+	<script>
+		new WOW().init();
+	</script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+	<script>
+		$(function() {
+			var pull = $('#pull');
+			menu = $('nav ul');
+			menuHeight = menu.height();
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+			$(window).resize(function() {
+				var w = $(window).width();
+				if (w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+
+
+</head>
+
+<body onload="init()">
+	<div class="bg">
+		<!----- start-header---->
+		<div class="container">
+			<div id="home" class="header wow bounceInDown" data-wow-delay="0.4s">
+				<div class="top-header">
+					<div class="logo">
+						<a href="index.html">Ti - Kan Islam</a>
+					</div>
+					<!----start-top-nav---->
+					<nav class="top-nav">
+						<ul class="top-nav">
+							<li><a href="index.html" class="scroll">Peta</a></li>
+							<li><a href="rute.html" class="scroll">Rute</a></li>
+						</ul>
+						<a href="#" id="pull">
+							<img src="images/nav-icon.png" title="menu" />
+						</a>
+					</nav>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!----- //End-header---->
+		<!---- banner-info ---->
+		<div class="banner-info">
+			<div class="container">
+
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!---- banner-info ---->
+
+
+
+
+
+
+	<!--- blog ---->
+	<div class="blog">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Judul</th>
+					<th>Lokasi</th>
+				</tr>
+			</thead>
+
+			<tbody id="daftar_kuliner">
+
+			</tbody>
+		</table>
+	</div>
+	<!--- blog ---->
+
+
+
+	<div class="clearfix"> </div>
+	<!---- footer --->
+
+
+	<a href="#" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+
+	<script type="text/javascript">
+		function init() {
+			for (var i = 0; i < data.length; i++) {
+				document.getElementById("daftar_kuliner").innerHTML += "<tr><td><b><a  href='rincian.html?id=" + data[i].ID + "' >" + data[i].Judul + "</a></b></td><td>" + data[i].Lokasi + "</td></tr>";
+			}
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	</script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="js/gmaps.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+	<script src="js/wow.min.js"></script>
+	<script src="http://dinodamarapratama.github.io/data.json"></script>
+	<script>
+		new WOW().init();
+	</script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+	<script>
+		$(function() {
+			var pull = $('#pull');
+			menu = $('nav ul');
+			menuHeight = menu.height();
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+			$(window).resize(function() {
+				var w = $(window).width();
+				if (w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			var vars = {},
+				hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for (var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars[hash[0]] = hash[1];
+				document.getElementById("id_kuliner").innerHTML = hash[1];
+			}
+		});
+	</script>
+</head>
+
+<body onload="init()">
+	<div class="bg">
+		<!----- start-header---->
+		<div class="container">
+			<div id="home" class="header wow bounceInDown" data-wow-delay="0.4s">
+				<div class="top-header">
+					<div class="logo">
+						<a href="index.html">Ti - Kan Islam</a>
+					</div>
+					<!----start-top-nav---->
+					<nav class="top-nav">
+						<ul class="top-nav">
+							<li><a href="index.html" class="scroll">Peta</a></li>
+							<li><a href="informasi.html" class="scroll">Informasi</a></li>
+							<li><a href="rute.html" class="scroll">Rute</a></li>
+						</ul>
+						<a href="#" id="pull">
+							<img src="images/nav-icon.png" title="menu" />
+						</a>
+					</nav>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!----- //End-header---->
+		<!---- banner-info ---->
+		<div class="banner-info">
+			<div class="container">
+				<h1 class="wow fadeIn" data-wow-delay="0.5s">
+					<span>Titik</span>
+					<br />
+					<label>Kebaikan Islam</label>
+				</h1>
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!---- banner-info ---->
+
+
+
+
+
+
+	<!--- blog ---->
+	<div class="blog">
+		<div class="head-section">
+			<div class="container">
+
+				<p style="display:none" id="id_kuliner"></p>
+			</div>
+		</div>
+		<div class="container" id="mapInfo">
+		</div>
+	</div>
+	<!--- blog ---->
+
+
+
+	<div class="clearfix"> </div>
+	<!---- footer --->
+
+	<a href="#" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+
+	<script type="text/javascript">
+		function init() {
+			var id = document.getElementById('id_kuliner').innerHTML;
+			var event2 = document.getElementById("mapInfo");
+			var div2 = document.createElement("div");
+			div2.className = "blog-grids";
+			div2.innerHTML = "<div class='blog-grid-edit'><div class='blog-art-pic'><img  src='" + data[id].Foto_URL + "' title='name' /></div><div class='blog-art-info'><h3><a href='#'>" + data[id].Judul + "</a></h3><p>"+data[id].Deskripsi + "<br></p><p><b>Lokasi : </b>" + data[id].Lokasi+ " <br></p></div></div>";
+			event2.appendChild(div2);
+		}
+	</script>
+</body>
+</html>
